@@ -1,8 +1,10 @@
 # Security-testable Flask API
 
-I will start from scratch using the example in the [Flask Restplus Website](https://flask-restplus.readthedocs.io/en/stable/example.html)
+## Switching to an Scalable Model
 
-1. Assuming you're using linun and python 3, create a virtual environment:
+Following the scalable [example](https://flask-restplus.readthedocs.io/en/stable/scaling.html) of flask-restplus, and using the [previous base](https://github.com/AlfredoPardo/security-testable-flask-api-pv/tree/01-Flask-Restplus-example) I created a small API with customers, cloud_providers, and cloud_accounts.
+
+1. Assuming you're using linux and python 3, create a virtual environment:
 
 > $ python3 -m venv venv
 
@@ -14,10 +16,8 @@ I will start from scratch using the example in the [Flask Restplus Website](http
 
 > $ pip install -r requirements.txt
 
-**Note**: You should use Werkzeug==0.16.1, otherwise flask-restplus fails
-
 4. Run the app
 
-> $ python main.py
+> $ python app.py
 
-This starts the API in http://127.0.0.1:5000/api/1/
+This is now available at: http://127.0.0.1:5000/
