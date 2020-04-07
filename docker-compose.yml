@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+
+  api:
+    container_name: stfa_api  
+    build: api/.
+    restart: always
+    ports: 
+      - "5000:5000"
+    networks:
+    - stfa_network
+
+  mongo:
+    container_name: stfa_db
+    image: mongo:4.0-xenial
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: stfa
+      MONGO_INITDB_ROOT_PASSWORD: S3c1rItyT3st4bl3#
+    ports:
+      - "27017:27017"
+    volumes:
+      - "/stfa/stfa_db:/data/db"
+    networks:
+    - stfa_network
+
+networks:
+  stfa_network:
