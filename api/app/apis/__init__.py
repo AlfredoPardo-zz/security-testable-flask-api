@@ -1,8 +1,8 @@
 from flask_restplus import Api
 
-from .cloud.cloud_providers import api as cloud_providers_ns
-from .cloud.cloud_accounts import api as cloud_accounts_ns
-from .general.customers import api as customers_ns
+from apis.cloud.cloud_accounts import api as cloud_accounts_ns
+from apis.cloud.cloud_providers import api as cloud_providers_ns
+from apis.general.customers import api as customers_ns
 
 api = Api(
     title='Security-testable Flask API',

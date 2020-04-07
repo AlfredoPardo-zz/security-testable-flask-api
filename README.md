@@ -1,23 +1,15 @@
 # Security-testable Flask API
 
-## Switching to an Scalable Model
+This improves over the [previous version](https://github.com/AlfredoPardo/security-testable-flask-api-pv/tree/02-Refactoring-Restplus) adding a MongoDB database, containerizing the API, and starting up everything from docker-compose.
 
-Following the scalable [example](https://flask-restplus.readthedocs.io/en/stable/scaling.html) of flask-restplus, and using the [previous base](https://github.com/AlfredoPardo/security-testable-flask-api-pv/tree/01-Flask-Restplus-example) I created a small API with customers, cloud_providers, and cloud_accounts.
+A Postman collection is also included
 
-1. Assuming you're using linux and python 3, create a virtual environment:
+## Start the Database and API
 
-> $ python3 -m venv venv
+> $ docker-compose build && docker-compose up
 
-2. Activate the virtual environment
+## Pending
+- Organize configurations independently
 
-> $ source venv/bin/activate
 
-3. Install the requirements
-
-> $ pip install -r requirements.txt
-
-4. Run the app
-
-> $ python app.py
-
-This is now available at: http://127.0.0.1:5000/
+This API is available at: http://127.0.0.1:5000/
