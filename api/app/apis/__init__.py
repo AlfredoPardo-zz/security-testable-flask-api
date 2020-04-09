@@ -3,6 +3,7 @@ from flask_restplus import Api
 from apis.cloud.cloud_accounts import api as cloud_accounts_ns
 from apis.cloud.cloud_providers import api as cloud_providers_ns
 from apis.general.customers import api as customers_ns
+from apis.general.users import api as users_ns
 
 api = Api(
     title='Security-testable Flask API',
@@ -14,3 +15,4 @@ api = Api(
 api.add_namespace(cloud_accounts_ns)
 api.add_namespace(cloud_providers_ns)
 api.add_namespace(customers_ns)
+api.add_namespace(users_ns)

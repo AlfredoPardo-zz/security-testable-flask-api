@@ -1,5 +1,4 @@
 import yaml
-from flask_mongoengine import MongoEngine
 
 def get_config():
 

@@ -2,14 +2,14 @@ version: '3.3'
 
 services:
 
-  api:
-    container_name: stfa_api  
-    build: api/.
-    restart: always
-    ports: 
-      - "5000:5000"
-    networks:
-    - stfa_network
+  # api:
+  #   container_name: stfa_api  
+  #   build: api/.
+  #   restart: always
+  #   ports: 
+  #     - "5000:5000"
+  #   networks:
+  #   - stfa_network
 
   mongo:
     container_name: stfa_db
