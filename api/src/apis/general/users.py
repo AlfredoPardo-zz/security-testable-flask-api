@@ -1,5 +1,15 @@
 from flask_restplus import Resource, Namespace, fields, marshal_with
 from flask import request
+from datetime import timedelta
+
+from flask_jwt_extended import (
+    jwt_required, create_access_token,
+    get_jwt_identity, create_refresh_token, jwt_refresh_token_required,
+    decode_token
+)
+
+ACCESS_TOKEN_EXPIRATION = timedelta(minutes=15)
+REFRESH_TOKEN_EXPIRATION = timedelta(hours=12)
 
 from models.general.user import User
 
@@ -94,6 +104,36 @@ class Users_Auth(Resource):
             content = request.json
             user = User.objects(username=content["username"], password=content["password"]).first()
             if user:
-                return {"msg": "Authentication Successful."}, 200
+                username = user.username
+                access_token = create_access_token(identity=username, expires_delta=ACCESS_TOKEN_EXPIRATION)
+                refresh_token = create_refresh_token(identity=username, expires_delta=REFRESH_TOKEN_EXPIRATION)
+                return {
+                    "access_token": access_token,
+                    "refresh_token" : refresh_token,
+                    "username": user.username,
+                    "name": user.name
+                }, 200
         else:
             return 400
+
+@api.route('/refresh_auth')
+class Users_Refresh_Auth(Resource):
+
+    @api.expect(model_auth)
+    def post(self):
+        '''Refreshs the Authentication Token for a User'''
+        if request.is_json:
+            content = request.json
+
+            token = content.get('token')
+
+            if token:
+                refresh_token = decode_token(token)
+                access_token = create_access_token(identity=refresh_token["identity"], expires_delta=ACCESS_TOKEN_EXPIRATION)
+                return {"access_token": access_token}, 200
+            else:
+                return {"msg": "Missing token parameter.-"}, 400
+
+        else:
+            return 400
+

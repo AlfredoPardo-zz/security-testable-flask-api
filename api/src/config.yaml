@@ -6,3 +6,6 @@ mongodb:
     host: 127.0.0.1
     port: 27017
     auth_source: admin
+jwt:
+    secret_key: j4tS3cReT$
+    algorithm: HS256

@@ -4,7 +4,7 @@ FROM python:3.8-slim-buster as build
 WORKDIR /app
 
 # Copy the current directory contents into the container at /DockerAPI
-ADD ./app /app
+ADD ./src /src
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r /app/requirements.txt
@@ -13,8 +13,8 @@ RUN pip install --trusted-host pypi.python.org -r /app/requirements.txt
 EXPOSE 5000
 
 # Define Environment Variables
-ENV PATH=$PATH:/app/
-ENV PYTHONPATH /app/
+ENV PATH=$PATH:/src/
+ENV PYTHONPATH /src/
 
 # Run the Application
 CMD python app.py

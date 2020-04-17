@@ -13,6 +13,17 @@ This generates a certificate with 10 years (3650 days) validity. Just in case, t
 
 > $ gunicorn --certfile certs/api_cert.pem --keyfile certs/api_key.pem -b 0.0.0.0:5000 app:app
 
+## Static Application Security Testing (SAST)
+
+$ pip install bandit
+$ cd api/app
+$ bandit -r . -f json -o bandit_output.json
+
+## Software Composition Analysis (SCA)
+
+$ pip install safety
+$ safety check -r requirements.txt --full-report --json > safety_report.json
+
 ## Start the Database and API
 
 > $ docker-compose build && docker-compose up

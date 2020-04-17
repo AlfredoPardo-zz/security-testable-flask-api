@@ -130,3 +130,9 @@ dmypy.json
 
 # VS Code Folder
 .vscode/
+
+# Bandit Check
+bandit_output.json
+
+# Safety Check
+safety_report.json
